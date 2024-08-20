@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv = "refresh" content = "2; url = /home" />
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+        html {
+            display: grid;
+            height: 100%;
+            margin: 0;
+            place-items: center;
+        }
+        body {
+            display: grid;
+            overflow: hidden;
+            font-family: 'Lato', sans-serif;
+            text-transform: uppercase;
+            text-align: center;
+        }
+        #container {
+            position: relative;
+            margin: auto;
+            overflow: hidden;
+            width: 1850px;
+            height: 580px;
+        }
+        h1 {
+            font-size: 0.9em;
+            font-weight: 100;
+            letter-spacing: 3px;
+            padding-top: 5px;
+            color: #fcfcfc;
+            padding-bottom: 5px;
+            text-transform: uppercase;
+        }
+        .green {
+            color: #4ec07d;
+        }
+        .red {
+            color: #e96075;
+        }
+        .alert {
+            font-weight: 700;
+            letter-spacing: 5px;
+            font-size: 32px;
+        }
+        p {
+            margin-top: -5px;
+            font-size: 0.5em;
+            font-weight: 100;
+            color: #5e5e5e;
+            letter-spacing: 1px;
+        }
+        #success-box {
+            position: absolute;
+            width: 35%; /* Width remains the same */
+            height: 100%; /* Height takes the full height of its parent */
+            left: 50%; /* Positioned halfway across its parent */
+            top: 50%; /* Positioned halfway down its parent */
+            transform: translate(-50%, -50%); /* Shifts the element back by half its width and height, centering it */
+            background: linear-gradient(to bottom right, #b0db7d 40%, #99dbb4 100%);
+            border-radius: 20px;
+            box-shadow: 5px 5px 20px rgba(203, 205, 211, 10);
+            perspective: 40px;
+        }
+        #error-box {
+            position: absolute;
+            width: 35%;
+            height: 100%;
+            right: 12%;
+            background: linear-gradient(to bottom left, #ef8d9c 40%, #ffc39e 100%);
+            border-radius: 20px;
+            box-shadow: 5px 5px 20px rgba(203, 205, 211, 10);
+        }
+        .face {
+            position: absolute;
+            width: 22%;
+            height: 22%;
+            background: #fcfcfc;
+            border-radius: 50%;
+            border: 1px solid #777;
+            top: 21%;
+            left: 37.5%;
+            z-index: 2;
+            animation: bounce 1s ease-in infinite;
+        }
+        .face2 {
+            position: absolute;
+            width: 22%;
+            height: 22%;
+            background: #fcfcfc;
+            border-radius: 50%;
+            border: 1px solid #777;
+            top: 21%;
+            left: 37.5%;
+            z-index: 2;
+            animation: roll 3s ease-in-out infinite;
+        }
+        .eye {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: #777;
+            border-radius: 50%;
+            top: 40%;
+            left: 20%;
+        }
+        .right {
+            left: 68%;
+        }
+        .mouth {
+            position: absolute;
+            top: 43%;
+            left: 41%;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+        }
+        .happy {
+            border: 2px solid;
+            border-color: transparent #777 #777 transparent;
+            transform: rotate(45deg);
+        }
+        .sad {
+            top: 49%;
+            border: 2px solid;
+            border-color: #777 transparent transparent #777;
+            transform: rotate(45deg);
+        }
+        .shadow {
+            position: absolute;
+            width: 21%;
+            height: 3%;
+            opacity: 0.5;
+            background: #777;
+            left: 40%;
+            top: 43%;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .scale {
+            animation: scale 1s ease-in infinite;
+        }
+        .move {
+            animation: move 3s ease-in-out infinite;
+        }
+        .message {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            height: 40%;
+            top: 47%;
+            font-size: 32px;
+        }
+        @keyframes bounce {
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        @keyframes scale {
+            50% {
+                transform: scale(0.9);
+            }
+        }
+        @keyframes roll {
+            0% {
+                transform: rotate(0deg);
+                left: 25%;
+            }
+            50% {
+                left: 60%;
+                transform: rotate(168deg);
+            }
+            100% {
+                transform: rotate(0deg);
+                left: 25%;
+            }
+        }
+        @keyframes move {
+            0% {
+                left: 25%;
+            }
+            50% {
+                left: 60%;
+            }
+            100% {
+                left: 25%;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+    <title> {{ title }} </title>
+</head>
+
+<body>
+    <meta http-equiv = "refresh" content = "2; url = {{ redirect_url }}" />
+    <div id="container">
+        <div id="success-box">
+          <div class="face">
+            <div class="eye"></div>
+            <div class="eye right"></div>
+            <div class="mouth happy"></div>
+            </div>
+            <div class="shadow scale"></div>
+            <div class="message">
+                <h1 class="alert">[message]</h1>
+                {% if message %}
+                    <span>{{ message }}</span>
+                {% endif %}
+            </div>
+        </div>
+      </div>
+</body>
+</html>

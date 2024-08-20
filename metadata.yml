@@ -1,0 +1,12 @@
+version: 2.0
+name: "The Hell's Lab"
+author: 0nion
+flag: 'FUSec{3asy_2_find_jwt_4nd_expl0it_ed1ted_CVE-2023-33733}'
+description: |
+ At a Hell's Lab, the Admin is secretly building a tool without letting the employees know. As a spy for an organization X, investigate what that tool is?, can you hack into it?
+value: 1000
+tags:
+  - Web
+  - "201"
+port: 11223
+protocol: http
